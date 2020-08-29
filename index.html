@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+<body>
+    <h1>JSON</h1>
+    <h3>javaScript Object Notation</h3>
+    <ul id="abir">
+
+    </ul>
+
+
+    <script>
+        //get the element
+        const ul = document.getElementById("abir");
+
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(json => displayUsers(json))
+
+        function displayUsers(user){
+            console.log(user)
+            const userName = user.map(user => user.email);
+            //console.log(userName);
+            for (let i = 0; i < userName.length; i++) {
+                const element = userName[i];
+                const li = document.createElement("li");
+                li.textContent = element;
+                ul.appendChild(li);
+                
+            }
+        }
+        // const info = {
+        //     id: 01,
+        //     name: "Abir",
+        //     contact: {
+        //         cell: 92925622,
+        //         location: "NY",
+        //         gmail: "abir@gmail.com"
+        //     }
+        // }
+        // //console.log(info)
+        // // convert to string
+        // const abirInfo = JSON.stringify(info);
+        // console.log(abirInfo);
+        // //convert string to object
+        // const str = JSON.parse(abirInfo);
+        // console.log(str);
+    </script>
+    
+</body>
+</html>
